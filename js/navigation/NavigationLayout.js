@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {
   StackNavigation,
@@ -15,6 +16,8 @@ class NavigationLayout extends Component {
     }
   }
 
+  aboutIcon = (<Icon name='ios-information-circle' size={10} color='white' />)
+
   render() {
     return ( 
       <TabNavigation
@@ -22,10 +25,10 @@ class NavigationLayout extends Component {
         navigatorUID='main'
         initialTab='about'>
         <TabItem
-          id='about'
-          title='about'
+          id='about'         
+          title='About'
+          renderIcon={(isSelected) => this.renderIcon("ios-information-circle", isSelected)}
           //  selectedStyle={styles.selectedTab}
-          // renderIcon={(isSeleted) => <Image source={require('./assets/images/home.png')} /> }
           >
           <StackNavigation
             id='about'
@@ -35,6 +38,12 @@ class NavigationLayout extends Component {
         </TabItem>
       </TabNavigation>
     );
+  }
+
+  renderIcon(iconName, isSelected){
+    return(
+      <Icon name={iconName} color={isSelected ? "black" : '#999999'} size={25}/>
+    )
   }
 }
 

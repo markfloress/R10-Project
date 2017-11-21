@@ -25,7 +25,7 @@ export default class App extends Component<{}> {
   render() {
     return (
       <Provider store={Store}>
-        <NavigationProvider context={navigationContext} router={Router}>
+        <NavigationProvider context={navigationContext}>
           <StackNavigation 
             navigatorUID='Root'
             id='Root'
