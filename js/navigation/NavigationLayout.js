@@ -7,7 +7,10 @@ import {
   TabNavigationItem as TabItem,
 } from '@expo/ex-navigation';
 
+import { Text } from 'react-native'
+
 import { Router } from './routes'
+import { colors, typography } from '../config/styles'
 
 class NavigationLayout extends Component {
   static route = {
@@ -21,11 +24,13 @@ class NavigationLayout extends Component {
       <TabNavigation
         id='main'
         navigatorUID='main'
-        initialTab='about'>
+        initialTab='about'
+        tabBarColor='black'>
 
         <TabItem
           id='schedule'         
           title='Schedule'
+          renderTitle={this.renderTitle}
           renderIcon={(isSelected) => this.renderIcon("ios-calendar", isSelected)}
           //  selectedStyle={styles.selectedTab}
           >
@@ -39,6 +44,7 @@ class NavigationLayout extends Component {
         <TabItem
           id='map'         
           title='Map'
+          renderTitle={this.renderTitle}
           renderIcon={(isSelected) => this.renderIcon("ios-map", isSelected)}
           //  selectedStyle={styles.selectedTab}
           >
@@ -52,6 +58,7 @@ class NavigationLayout extends Component {
         <TabItem
           id='faves'         
           title='Faves'
+          renderTitle={this.renderTitle}
           renderIcon={(isSelected) => this.renderIcon("ios-heart", isSelected)}
           //  selectedStyle={styles.selectedTab}
           >
@@ -65,6 +72,7 @@ class NavigationLayout extends Component {
         <TabItem
           id='about'         
           title='About'
+          renderTitle={this.renderTitle}
           renderIcon={(isSelected) => this.renderIcon("ios-information-circle", isSelected)}
           //  selectedStyle={styles.selectedTab}
           >
@@ -81,7 +89,13 @@ class NavigationLayout extends Component {
 
   renderIcon(iconName, isSelected){
     return(
-      <Icon name={iconName} color={isSelected ? "black" : '#999999'} size={25}/>
+      <Icon name={iconName} color={isSelected ? "white" : colors.medGray} size={25}/>
+    )
+  }
+
+  renderTitle(isSelected, title){
+    return(
+      <Text style={{ color: isSelected ? "white" : colors.medGray, fontFamily: typography.fontMainReg }}> {title} </Text>
     )
   }
 }

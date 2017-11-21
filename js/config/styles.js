@@ -1,6 +1,8 @@
 export const colors ={
-  red: "CF392A"
+  medGray: "#999999"
 }
 
-// import colors from styles
-// colors.red  // colors.purple
+export const typography = {
+  fontMainReg: "Montserrat",
+  fontMainLight: "Montserrat-Light"
+}
