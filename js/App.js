@@ -18,67 +18,67 @@ import {
   StackNavigation,
 } from '@expo/ex-navigation';
 
-import About from './scene/about'
+// import About from './scene/about'
 
+import { Router } from './navigation/routes'
 
-
-const Router = createRouter(() => ({
-  home: () => HomeScreen,
-  about: () => AboutScreen
-}));
+// const Router = createRouter(() => ({
+//   home: () => HomeScreen,
+//   about: () => AboutScreen
+// }));
 
 export default class App extends Component<{}> {
   render() {
     return (
       // <About />
       <NavigationProvider router={Router}>
-        <StackNavigation initialRoute={Router.getRoute('home')} />
+        <StackNavigation initialRoute={Router.getRoute('about')} />
       </NavigationProvider>
     );
   }
 }
 
-class HomeScreen extends React.Component {
-  static route = {
-    navigationBar: {
-      title: 'Home',
-    }
-  }
+// class HomeScreen extends React.Component {
+//   static route = {
+//     navigationBar: {
+//       title: 'Home',
+//     }
+//   }
 
-  render() {
-    return (
-      <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text>HomeScreen!</Text>
-        <Text onPress={this._goToAbout}>
-          Push about route
-        </Text>
-      </View>
-    )
-  }
-  _goToAbout = () => {
-    this.props.navigator.push(Router.getRoute('about'));
-  }
-}
+//   render() {
+//     return (
+//       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+//         <Text>HomeScreen!</Text>
+//         <Text onPress={this._goToAbout}>
+//           Push about route
+//         </Text>
+//       </View>
+//     )
+//   }
+//   _goToAbout = () => {
+//     this.props.navigator.push(Router.getRoute('about'));
+//   }
+// }
 
-class AboutScreen extends React.Component {
- static route = {
-   navigationBar: {
-     title: 'About',
-   }
- }
+// class AboutScreen extends React.Component {
+//  static route = {
+//    navigationBar: {
+//      title: 'About',
+//    }
+//  }
 
- render() {
-    return (
-      <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-        <Text>AboutScreen!</Text>
-        <Text onPress={this._goBackHome}>
-          Go back home
-        </Text>
-      </View>
-    )
-  }
+//  render() {
+//     return (
+//       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+//         <Text>AboutScreen!</Text>
+//         <Text onPress={this._goBackHome}>
+//           Go back home
+//         </Text>
+//       </View>
+//     )
+//   }
  
-  _goBackHome = () => {
-    this.props.navigator.pop();
-  }
-}
+//   _goBackHome = () => {
+//     this.props.navigator.pop();
+//   }
+// }

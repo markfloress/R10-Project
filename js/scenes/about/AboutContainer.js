@@ -11,6 +11,12 @@ class AboutContainer extends Component {
     }
   }
 
+  static route = {
+    navigationBar: {
+      title: 'About',
+    }
+  }
+
   componentDidMount(){
     fetch('https://r10app-95fea.firebaseio.com/code_of_conduct.json')
     .then(resp => resp.json())
@@ -30,6 +36,9 @@ class AboutContainer extends Component {
     return <About data={this.state.data} isLoading={this.state.isLoading}/>
   }
 
+  _goBack = () => {
+    this.props.navigator.pop();
+  }
 }
 
 // AboutContainer.prototype = {
