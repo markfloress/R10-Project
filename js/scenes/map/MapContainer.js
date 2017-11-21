@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Faves from './Faves'
+import Maps from './Maps'
 import PropTypes from 'prop-types'
 
-class FavesContainer extends Component {
+class MapContainer extends Component {
   constructor(){
     super()
     this.state = {
@@ -13,12 +13,12 @@ class FavesContainer extends Component {
 
   static route = {
     navigationBar: {
-      title: 'Faves',
+      title: 'Maps',
     }
   }
 
   render() {
-    return <Faves data={this.state.data} isLoading={this.state.isLoading}/>
+    return <Maps data={this.state.data} isLoading={this.state.isLoading}/>
   }
 
   _goBack = () => {
@@ -26,9 +26,9 @@ class FavesContainer extends Component {
   }
 }
 
-// FavesContainer.prototype = {
+// MapsContainer.prototype = {
 
 // }
 
-export default FavesContainer;
+export default MapContainer;
 
