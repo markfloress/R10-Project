@@ -16,14 +16,52 @@ class NavigationLayout extends Component {
     }
   }
 
-  aboutIcon = (<Icon name='ios-information-circle' size={10} color='white' />)
-
   render() {
     return ( 
       <TabNavigation
         id='main'
         navigatorUID='main'
         initialTab='about'>
+
+        <TabItem
+          id='schedule'         
+          title='Schedule'
+          renderIcon={(isSelected) => this.renderIcon("ios-calendar", isSelected)}
+          //  selectedStyle={styles.selectedTab}
+          >
+          <StackNavigation
+            id='schedule'
+            navigatorUID='schedule'
+            initialRoute={Router.getRoute('schedule')}
+          />
+        </TabItem>
+
+        <TabItem
+          id='map'         
+          title='Map'
+          renderIcon={(isSelected) => this.renderIcon("ios-map", isSelected)}
+          //  selectedStyle={styles.selectedTab}
+          >
+          <StackNavigation
+            id='map'
+            navigatorUID='map'
+            initialRoute={Router.getRoute('map')}
+          />
+        </TabItem>
+
+        <TabItem
+          id='faves'         
+          title='Faves'
+          renderIcon={(isSelected) => this.renderIcon("ios-heart", isSelected)}
+          //  selectedStyle={styles.selectedTab}
+          >
+          <StackNavigation
+            id='faves'
+            navigatorUID='faves'
+            initialRoute={Router.getRoute('faves')}
+          />
+        </TabItem>
+
         <TabItem
           id='about'         
           title='About'
@@ -36,6 +74,7 @@ class NavigationLayout extends Component {
             initialRoute={Router.getRoute('about')}
           />
         </TabItem>
+
       </TabNavigation>
     );
   }
