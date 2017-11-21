@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { NavigationProvider } from '@expo/ex-navigation';
+import { NavigationReducer } from '@expo/ex-navigation';
 
 export default combineReducers({
-  navigation: NavigationProvider
+  navigation: NavigationReducer
 })
