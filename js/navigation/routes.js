@@ -13,5 +13,4 @@ export const Router = createRouter(() => ({
   schedule: () => Schedule,
   map: () => Maps,
   faves: () => Faves,  
-
 }));
