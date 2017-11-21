@@ -5,80 +5,34 @@
  */
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { Provider } from 'react-redux'
 
 import {
-  createRouter,
+  NavigationContext,
   NavigationProvider,
   StackNavigation,
 } from '@expo/ex-navigation';
 
-// import About from './scene/about'
-
 import { Router } from './navigation/routes'
+import Store from './redux/store'
 
-// const Router = createRouter(() => ({
-//   home: () => HomeScreen,
-//   about: () => AboutScreen
-// }));
+const navigationContext = new NavigationContext({
+  router: Router,
+  store: Store
+})
 
 export default class App extends Component<{}> {
   render() {
     return (
-      // <About />
-      <NavigationProvider router={Router}>
-        <StackNavigation initialRoute={Router.getRoute('about')} />
-      </NavigationProvider>
+      <Provider store={Store}>
+        <NavigationProvider context={navigationContext} router={Router}>
+          <StackNavigation 
+            navigatorUID='Root'
+            id='Root'
+            initialRoute={Router.getRoute('layout')}
+          />
+        </NavigationProvider>
+      </Provider>
     );
   }
 }
-
-// class HomeScreen extends React.Component {
-//   static route = {
-//     navigationBar: {
-//       title: 'Home',
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-//         <Text>HomeScreen!</Text>
-//         <Text onPress={this._goToAbout}>
-//           Push about route
-//         </Text>
-//       </View>
-//     )
-//   }
-//   _goToAbout = () => {
-//     this.props.navigator.push(Router.getRoute('about'));
-//   }
-// }
-
-// class AboutScreen extends React.Component {
-//  static route = {
-//    navigationBar: {
-//      title: 'About',
-//    }
-//  }
-
-//  render() {
-//     return (
-//       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-//         <Text>AboutScreen!</Text>
-//         <Text onPress={this._goBackHome}>
-//           Go back home
-//         </Text>
-//       </View>
-//     )
-//   }
- 
-//   _goBackHome = () => {
-//     this.props.navigator.pop();
-//   }
-// }

@@ -1,12 +1,10 @@
-import {
-  createRouter,
-  NavigationProvider,
-  StackNavigation,
-} from '@expo/ex-navigation';
+import { createRouter } from '@expo/ex-navigation';
 
 import About from '../scenes/about'
+import Layout from './NavigationLayout'
 
 export const Router = createRouter(() => ({
   // home: () => HomeScreen,
-  about: () => About
+  about: () => About,
+  layout: () => Layout
 }));
