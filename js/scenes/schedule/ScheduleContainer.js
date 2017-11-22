@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Schedule from './Schedule'
+import { Router } from '../../navigation/routes'
 import { getSession } from '../../redux/modules/session'
 
 
@@ -19,11 +20,7 @@ class ScheduleContainer extends Component {
   }
 
   render() {
-    return <Schedule data={this.props.session}/>
-  }
-
-  _goBack = () => {
-    this.props.navigator.pop()
+    return <Schedule data={this.props.session} currentNavigatorUID={this.props.currentNavigatorUID} />
   }
 }
 
@@ -33,7 +30,8 @@ class ScheduleContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    session: state.sessionReducer.session
+    session: state.sessionReducer.session,
+    currentNavigatorUID: state.navigation.currentNavigatorUID
   }
 }
 

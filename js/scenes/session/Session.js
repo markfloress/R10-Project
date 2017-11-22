@@ -1,19 +1,19 @@
 import React from 'react';
+import moment from 'moment'
 import { Text, View, ScrollView, Image, StyleSheet, ActivityIndicator, FlatList } from 'react-native'
 import styles from './styles'
 
-const Session = () => {
-  
+const Session = ({data}) => {
+    console.log(data)
   return(
       <ScrollView>     
-        
         <View>
-          <Text style={{ margin: 10 }}> THIS IS FROM Session. </Text>
-          {/* <Text style={{ margin: 10 }}> Date & Venue </Text>
-          <Text style={{ margin: 10 }}> The R10 conference will take place on Tuesday, June 27, 2017 in Vancouver, BC. </Text>
-          <Text style={{ margin: 10 }}> Code of Conduct </Text>             */}
+          <Text> {data.location} </Text>
+          <Text> {data.title} </Text>
+          <Text> {moment.unix(data.title).format("h:mm a")} </Text>
+          <Text> {data.description} </Text>
+          <Text> {data.location} </Text>
         </View>
-
       </ScrollView>
     )
 }

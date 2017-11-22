@@ -2,15 +2,11 @@ import React, {Component} from 'react';
 import Session from './Session'
 import PropTypes from 'prop-types'
 
-class SessionContainer extends Component {
-  constructor(){
-    super()
-    this.state = {
-      isLoading: true,
-      data: []
-    }
-  }
+import { View } from 'react-native'
 
+
+
+class SessionContainer extends Component {
   static route = {
     navigationBar: {
       title: 'Session',
@@ -18,11 +14,11 @@ class SessionContainer extends Component {
   }
 
   render() {
-    return <Session data={this.state.data} isLoading={this.state.isLoading}/>
-  }
-
-  _goBack = () => {
-    this.props.navigator.pop();
+    return (
+      <View>
+        <Session data={this.props.sessionData}/>
+      </View>
+    )
   }
 }
 

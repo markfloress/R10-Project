@@ -2,20 +2,24 @@ import React from 'react'
 import {
   Text,
   View,
-  SectionList
+  SectionList,
+  TouchableHighlight
 } from 'react-native'
 import moment from 'moment'
 // import styles from './styles'
+import { goToSession } from '../../lib/navigationHelper';
 
-const SessionList = ({data}) => (
+const SessionList = ({data, currentNavigatorUID}) => (
   <View>
   <SectionList
     renderItem={({item}) => {
       return(
-        <View>
-          <Text>{item.title}</Text>
-          <Text>{item.location}</Text>
-        </View>
+        <TouchableHighlight onPress={()=> goToSession(currentNavigatorUID, item)}>
+          <View>
+            <Text>{item.title}</Text>
+            <Text>{item.location}</Text>
+          </View>
+        </TouchableHighlight>
       )
     }}
 
