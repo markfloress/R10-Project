@@ -29,7 +29,7 @@ const SessionList = ({data}) => (
 
     renderSectionHeader={({section}) => 
       <Text>
-        {moment(section.title).format("hh:mm a")}
+        {moment.unix(section.title).format("h:mm a")}
       </Text>}
     sections={data}
   />
