@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import About from './About'
-import { getConduct } from '../../redux/modules/conduct';
+import { getConduct } from '../../redux/modules/conduct'
 
 class AboutContainer extends Component {
 
@@ -37,5 +37,5 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(AboutContainer);
+export default connect(mapStateToProps)(AboutContainer)
 

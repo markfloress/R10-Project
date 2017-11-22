@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
-import Schedule from './Schedule'
+import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import Schedule from './Schedule'
+import { getSession } from '../../redux/modules/session'
+
+
 class ScheduleContainer extends Component {
-  constructor(){
-    super()
-    this.state = {
-      isLoading: true,
-      data: []
-    }
+
+  componentDidMount(){
+    this.props.dispatch(getSession())
   }
 
   static route = {
@@ -18,11 +19,11 @@ class ScheduleContainer extends Component {
   }
 
   render() {
-    return <Schedule data={this.state.data} isLoading={this.state.isLoading}/>
+    return <Schedule data={this.props.session}/>
   }
 
   _goBack = () => {
-    this.props.navigator.pop();
+    this.props.navigator.pop()
   }
 }
 
@@ -30,5 +31,11 @@ class ScheduleContainer extends Component {
 
 // }
 
-export default ScheduleContainer;
+function mapStateToProps(state){
+  return {
+    session: state.sessionReducer.session
+  }
+}
+
+export default connect(mapStateToProps)(ScheduleContainer)
 

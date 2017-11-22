@@ -1,20 +1,16 @@
 import React from 'react';
 import { Text, View, ScrollView, Image, StyleSheet, ActivityIndicator, FlatList } from 'react-native'
+
 import styles from './styles'
+import SessionList from '../../components/sectionList'
 
-const Schedule = () => {
+const Schedule = ({data}) => {
   
-  return(
-      <ScrollView>     
-        
+  return(   
         <View>
-          <Text style={{ margin: 10 }}> THIS IS FROM Schedule. </Text>
-          {/* <Text style={{ margin: 10 }}> Date & Venue </Text>
-          <Text style={{ margin: 10 }}> The R10 conference will take place on Tuesday, June 27, 2017 in Vancouver, BC. </Text>
-          <Text style={{ margin: 10 }}> Code of Conduct </Text>             */}
+          {/* <Text style={{ margin: 10 }}> THIS IS FROM Schedule. </Text> */}
+          <SessionList data={data} />
         </View>
-
-      </ScrollView>
     )
 }
 
