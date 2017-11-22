@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import About from './About'
+import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import About from './About'
+import { getConduct } from '../../redux/modules/conduct';
+
 class AboutContainer extends Component {
-  constructor(){
-    super()
-    this.state = {
-      isLoading: true,
-      data: []
-    }
+
+  componentDidMount(){
+    this.props.dispatch(getConduct())
   }
 
   static route = {
@@ -17,27 +17,12 @@ class AboutContainer extends Component {
     }
   }
 
-  componentDidMount(){
-    fetch('https://r10app-95fea.firebaseio.com/code_of_conduct.json')
-    .then(resp => resp.json())
-    .then(data => {
-      this.setState({ data })
-    })
-    .catch(err => console.log(err))
-  }
-
-  componentDidUpdate(){
-    if(this.state.data && this.state.isLoading){
-      this.setState ({ isLoading: false })
-    }
-  }
-
   render() {
-    return <About data={this.state.data} isLoading={this.state.isLoading}/>
+    return <About data={this.props.conduct} isLoading={this.props.isLoading}/>
   }
 
   _goBack = () => {
-    this.props.navigator.pop();
+    this.props.navigator.pop()
   }
 }
 
@@ -45,5 +30,12 @@ class AboutContainer extends Component {
 
 // }
 
-export default AboutContainer;
+function mapStateToProps(state){
+  return {
+    conduct: state.conductReducer.conduct,
+    isLoading: state.conductReducer.isLoading
+  }
+}
+
+export default connect(mapStateToProps)(AboutContainer);
 
