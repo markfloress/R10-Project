@@ -3,7 +3,6 @@ import { Text, View, ScrollView, Image, StyleSheet, ActivityIndicator, FlatList 
 import styles from './styles'
 
 const Speaker = ({speaker}) => {
-  console.log(speaker)
   return(
       <ScrollView>     
         

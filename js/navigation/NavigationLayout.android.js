@@ -95,7 +95,7 @@ class NavigationLayout extends Component {
 
   renderTitle(isSelected, title){
     return(
-      <Text style={{ color: isSelected ? "white" : colors.medGray, fontFamily: typography.fontMainReg }}> {title} </Text>
+      <Text style={{ color: isSelected ? "white" : colors.medGray, fontFamily: typography.fontMainReg}}> {title} </Text>
     )
   }
 }

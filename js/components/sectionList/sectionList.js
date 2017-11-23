@@ -3,7 +3,8 @@ import {
   Text,
   View,
   SectionList,
-  TouchableHighlight
+  TouchableHighlight,
+  Platform
 } from 'react-native'
 import moment from 'moment'
 // import styles from './styles'
@@ -19,7 +20,7 @@ const SessionList = ({data, currentNavigatorUID}) => (
           <View>
             <Text>{item.title}</Text>
             <Text>{item.location}</Text>
-            <Icon name='ios-heart-outline' color= "black" size={25}/>
+            <Icon name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} color="red" size={25}/>
           </View>
         </TouchableHighlight>
       )
