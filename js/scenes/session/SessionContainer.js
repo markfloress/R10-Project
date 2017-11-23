@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import Session from './Session'
 import PropTypes from 'prop-types'
 
 import { View } from 'react-native'
-
-
+import { getSpeaker } from '../../redux/modules/speaker'
 
 class SessionContainer extends Component {
   static route = {
@@ -13,10 +13,14 @@ class SessionContainer extends Component {
     }
   }
 
+  componentDidMount(){
+    this.props.dispatch(getSpeaker(this.props.sessionData.speaker))
+  }
+
   render() {
     return (
       <View>
-        <Session data={this.props.sessionData}/>
+        <Session data={this.props.sessionData} speaker={this.props.speaker}/>
       </View>
     )
   }
@@ -26,5 +30,11 @@ class SessionContainer extends Component {
 
 // }
 
-export default SessionContainer;
+function mapStateToProps(state){
+  return {
+    speaker: state.speakerReducer.speaker
+  }
+}
+
+export default connect(mapStateToProps)(SessionContainer)
 

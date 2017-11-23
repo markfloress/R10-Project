@@ -3,14 +3,6 @@ import Speaker from './Speaker'
 import PropTypes from 'prop-types'
 
 class SpeakerContainer extends Component {
-  constructor(){
-    super()
-    this.state = {
-      isLoading: true,
-      data: []
-    }
-  }
-
   static route = {
     navigationBar: {
       title: 'Speaker',
@@ -18,7 +10,7 @@ class SpeakerContainer extends Component {
   }
 
   render() {
-    return <Speaker data={this.state.data} isLoading={this.state.isLoading}/>
+    return <Speaker speaker={this.props.speakerData.speaker}/>
   }
 
   _goBack = () => {

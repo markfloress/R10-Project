@@ -20,7 +20,7 @@ class ScheduleContainer extends Component {
   }
 
   render() {
-    return <Schedule data={this.props.session} currentNavigatorUID={this.props.currentNavigatorUID} />
+    return <Schedule data={this.props.session}/>
   }
 }
 
@@ -30,8 +30,7 @@ class ScheduleContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    session: state.sessionReducer.session,
-    currentNavigatorUID: state.navigation.currentNavigatorUID
+    session: state.sessionReducer.session
   }
 }
 

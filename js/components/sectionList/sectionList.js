@@ -8,6 +8,7 @@ import {
 import moment from 'moment'
 // import styles from './styles'
 import { goToSession } from '../../lib/navigationHelper';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const SessionList = ({data, currentNavigatorUID}) => (
   <View>
@@ -18,6 +19,7 @@ const SessionList = ({data, currentNavigatorUID}) => (
           <View>
             <Text>{item.title}</Text>
             <Text>{item.location}</Text>
+            <Icon name='ios-heart-outline' color= "black" size={25}/>
           </View>
         </TouchableHighlight>
       )
