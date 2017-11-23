@@ -3,8 +3,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import {
   StackNavigation,
-  TabNavigation,
-  TabNavigationItem as TabItem,
+  DrawerNavigation,
+  DrawerNavigationItem,
 } from '@expo/ex-navigation';
 
 import { Text } from 'react-native'
@@ -13,24 +13,16 @@ import { Router } from './routes'
 import { colors, typography } from '../config/styles'
 
 class NavigationLayout extends Component {
-  static route = {
-    navigationBar: {
-      visible: true
-    }
-  }
-
   render() {
     return ( 
-      <TabNavigation
-        id='main'
-        navigatorUID='main'
-        initialTab='about'
-        tabBarColor='black'>
+      <DrawerNavigation
+        id='schedule'
+        initialItem='schedule'>
 
-        <TabItem
+        <DrawerNavigationItem
           id='schedule'         
           title='Schedule'
-          renderTitle={this.renderTitle}
+          renderTitle={(isSelected) => this.renderTitle(isSelected, 'Schedule')}
           renderIcon={(isSelected) => this.renderIcon("ios-calendar", isSelected)}
           //  selectedStyle={styles.selectedTab}
           >
@@ -39,12 +31,12 @@ class NavigationLayout extends Component {
             navigatorUID='schedule'
             initialRoute={Router.getRoute('schedule')}
           />
-        </TabItem>
+        </DrawerNavigationItem>
 
-        <TabItem
+        <DrawerNavigationItem
           id='map'         
           title='Map'
-          renderTitle={this.renderTitle}
+          renderTitle={(isSelected) => this.renderTitle(isSelected, 'Map')}
           renderIcon={(isSelected) => this.renderIcon("ios-map", isSelected)}
           //  selectedStyle={styles.selectedTab}
           >
@@ -53,12 +45,12 @@ class NavigationLayout extends Component {
             navigatorUID='map'
             initialRoute={Router.getRoute('map')}
           />
-        </TabItem>
+        </DrawerNavigationItem>
 
-        <TabItem
+        <DrawerNavigationItem
           id='faves'         
           title='Faves'
-          renderTitle={this.renderTitle}
+          renderTitle={(isSelected) => this.renderTitle(isSelected, 'Faves')}
           renderIcon={(isSelected) => this.renderIcon("ios-heart", isSelected)}
           //  selectedStyle={styles.selectedTab}
           >
@@ -67,12 +59,12 @@ class NavigationLayout extends Component {
             navigatorUID='faves'
             initialRoute={Router.getRoute('faves')}
           />
-        </TabItem>
+        </DrawerNavigationItem>
 
-        <TabItem
+        <DrawerNavigationItem
           id='about'         
           title='About'
-          renderTitle={this.renderTitle}
+          renderTitle={(isSelected) => this.renderTitle(isSelected, 'About')}
           renderIcon={(isSelected) => this.renderIcon("ios-information-circle", isSelected)}
           //  selectedStyle={styles.selectedTab}
           >
@@ -81,21 +73,21 @@ class NavigationLayout extends Component {
             navigatorUID='about'
             initialRoute={Router.getRoute('about')}
           />
-        </TabItem>
+        </DrawerNavigationItem>
 
-      </TabNavigation>
+      </DrawerNavigation>
     );
   }
 
   renderIcon(iconName, isSelected){
     return(
-      <Icon name={iconName} color={isSelected ? "white" : colors.medGray} size={25}/>
+      <Icon name={iconName} color={isSelected ? "black" : colors.medGray} size={25}/>
     )
   }
 
   renderTitle(isSelected, title){
     return(
-      <Text style={{ color: isSelected ? "white" : colors.medGray, fontFamily: typography.fontMainReg}}> {title} </Text>
+      <Text style={{ color: isSelected ? "black" : colors.medGray, fontFamily: typography.fontMainReg}}> {title} </Text>
     )
   }
 }

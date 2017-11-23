@@ -13,12 +13,6 @@ import { Router } from './routes'
 import { colors, typography } from '../config/styles'
 
 class NavigationLayout extends Component {
-  static route = {
-    navigationBar: {
-      visible: true
-    }
-  }
-
   render() {
     return ( 
       <TabNavigation

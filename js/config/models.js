@@ -10,15 +10,15 @@ const FaveSchema = {
 };
 
 export const queryFave = () => {
-  return realm.objects('Fave')
+  return Realm.objects('Fave')
 }
 
 export const deleteFave = (Fave) => {
-  let deleteFave = realm.objects('Fave').filtered('id == $0', Fave)
+  let deleteFave = Realm.objects('Fave').filtered('id == $0', Fave)
 
   try {
-    realm.write(() => {
-      realm.delete(deleteFave);
+    Realm.write(() => {
+      Realm.delete(deleteFave);
     })
   } catch (e) {
     console.log(e)
@@ -28,8 +28,8 @@ export const deleteFave = (Fave) => {
 
 export const addFave = (session_id) => {
   try {
-    realm.write(() => {
-      realm.create('Fave', {id: session_id, faved_on: new Date()})
+    Realm.write(() => {
+      Realm.create('Fave', {id: session_id, faved_on: new Date()})
     })
   } catch (e) {
     console.log(e)
