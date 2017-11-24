@@ -2,15 +2,9 @@ import React, {Component} from 'react';
 import Faves from './Faves'
 import PropTypes from 'prop-types'
 
-class FavesContainer extends Component {
-  constructor(){
-    super()
-    this.state = {
-      isLoading: true,
-      data: []
-    }
-  }
+import { queryFave } from '../../config/models'
 
+class FavesContainer extends Component {
   static route = {
     navigationBar: {
       title: 'Faves',
@@ -18,7 +12,7 @@ class FavesContainer extends Component {
   }
 
   render() {
-    return <Faves data={this.state.data} isLoading={this.state.isLoading}/>
+    return <Faves faves={queryFave().map(x => x.id)}/>
   }
 
   _goBack = () => {

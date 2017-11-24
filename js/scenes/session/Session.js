@@ -1,8 +1,10 @@
 import React from 'react';
 import moment from 'moment'
-import { Text, View, ScrollView, Image, TouchableHighlight } from 'react-native'
+import { Text, View, ScrollView, Image, TouchableHighlight, Button } from 'react-native'
 import styles from './styles'
-import { goToSpeaker } from '../../lib/navigationHelper'
+import { goToSpeaker } from '../../lib/navigationHelper';
+
+import { addFave } from '../../config/models'
 
 const Session = ({data, speaker}) => {
   return(
@@ -22,6 +24,10 @@ const Session = ({data, speaker}) => {
           <Text> {speaker.name} </Text>          
         </View>
         </TouchableHighlight>
+        <Button
+          onPress={() => addFave(data.session_id)}
+          title='Add to Favourites'
+        />
       </ScrollView>
     )
 }
