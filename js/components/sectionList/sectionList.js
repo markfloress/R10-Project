@@ -7,9 +7,12 @@ import {
   Platform
 } from 'react-native'
 import moment from 'moment'
-// import styles from './styles'
+
+import styles from './styles'
 import { goToSession } from '../../lib/navigationHelper';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
 
 const SessionList = ({data, currentNavigatorUID}) => (
   <View>
@@ -17,27 +20,26 @@ const SessionList = ({data, currentNavigatorUID}) => (
     renderItem={({item}) => {
       return(
         <TouchableHighlight onPress={()=> goToSession(currentNavigatorUID, item)}>
-          <View>
-            <Text>{item.title}</Text>
-            <Text>{item.location}</Text>
-            <Icon name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} color="red" size={25}/>
+          <View style={styles.indivSession}>
+            <Text style={styles.sessionTitle}>{item.title}</Text>
+            <Text style={styles.sessionLocation}>{item.location}</Text>
+            <Icon name={iconName} style={styles.faveIcon} size={25}/>
           </View>
         </TouchableHighlight>
       )
     }}
 
-    ItemSeparatorComponent = {()=>{
-      return (
-        <View
-          // style={styles.separator}
-        />
-      )
-    }}
+    ItemSeparatorComponent={()=> 
+      <View style={styles.sessionSeparator}>
+      </View>
+    }
 
     renderSectionHeader={({section}) => 
-      <Text>
-        {moment.unix(section.title).format("h:mm a")}
-      </Text>}
+      <View style={styles.titleSeparator}>
+        <Text style={styles.titleSeparatorText}>
+          {moment.unix(section.title).format("h:mm a").toUpperCase()}
+        </Text>
+      </View>}
     sections={data}
   />
   </View>
