@@ -1,8 +1,11 @@
 import React from 'react';
 import { Text, View, ScrollView, Image, StyleSheet, ActivityIndicator, FlatList } from 'react-native'
 import styles from './styles'
+import ConductItem from './ConductItem'
 
 const About = ({data, isLoading}) => {
+
+  let key = 0
 
   if(isLoading){
     return <ActivityIndicator animating={true} size="small" color="red" />
@@ -26,15 +29,13 @@ const About = ({data, isLoading}) => {
         </View>
 
         <View>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => 
-            <View>
-              <Text>{item.title}</Text>
-              <Text>{item.description}</Text>
-            </View>} 
-           keyExtractor={(item) => item.title}
-          />
+          {data.map(x => {
+            return (
+              <View key={key++}>
+                <ConductItem data={x}/>
+              </View>
+            )
+          })}
         </View>
       </ScrollView>
     )

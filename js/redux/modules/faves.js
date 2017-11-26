@@ -1,5 +1,4 @@
 import { queryFave } from '../../config/models'
-import { getSession } from './session'
 
 const getFaveSuccess = (data) => {
   return { type: 'GET_FAVE_SUCCESS', data }
@@ -7,17 +6,14 @@ const getFaveSuccess = (data) => {
 
 export const getFaveData = () => async dispatch => {
   try{
-    const data = queryFave().map(x => x.id)
-    const session = dispatch(getSession())
-    console.log('sess',session)
-
-    dispatch(getFaveSuccess(session))
+    const data = queryFave().map(x => x)
+    dispatch(getFaveSuccess(data))
   } catch (Err) {
     console.log('error with get fave', Err)
   }
 }
 
-const initialState ={
+const initialState = {
   faveList: []
 }
 

@@ -3,8 +3,9 @@ import Faves from './Faves'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { queryFave } from '../../config/models'
+import realm from '../../config/models'
 import { getFaveData } from '../../redux/modules/faves'
+import { getSession } from '../../redux/modules/session'
 
 class FavesContainer extends Component {
   static route = {
@@ -13,18 +14,30 @@ class FavesContainer extends Component {
     }
   }
 
-  componentDidMount(){
-    console.log('success did mount')
+  faveUpdates(){
     this.props.dispatch(getFaveData())
   }
 
-  render() {
-    console.log('props',this.props)
-    return <Faves faves={queryFave().map(x => x.id)}/>
+  componentDidMount(){
+    this.props.dispatch(getFaveData())
+    this.props.dispatch(getSession())    
+    // realm.addListener('change', this.faveUpdates)
   }
 
-  _goBack = () => {
-    this.props.navigator.pop();
+  componentWillUnmount(){
+    // realm.removeListener('change', this.faveUpdates)
+  }
+
+  render() {
+    const { session, faveList } = this.props
+
+    const allFaved = session.filter(item => { 
+      return faveList.indexOf(item.session_id) >= 0
+    })
+
+    // return <Faves faves={this.props.session.map(x => x.data.map(y => y.session_id))}/>
+    // return <Faves faves={this.props.faveList}/>
+    return <Faves faves={allFaved}/>    
   }
 }
 
@@ -34,7 +47,8 @@ class FavesContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    faveList: state.faveReducer.faveList
+    faveList: state.faveReducer.faveList,
+    session: state.sessionReducer.session
   }
 }
 
