@@ -1,32 +1,42 @@
-import React from 'react';
+import React from 'react'
 import moment from 'moment'
-import { Text, View, ScrollView, Image, TouchableHighlight, Button } from 'react-native'
+import { Text, View, ScrollView, Image, TouchableHighlight, Button, Platform } from 'react-native'
 import styles from './styles'
-import { goToSpeaker } from '../../lib/navigationHelper';
+import { goToSpeaker } from '../../lib/navigationHelper'
 
 import { addFave } from '../../config/models'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const Session = ({data, speaker}) => {
+
+  const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
+
   return(
-      <ScrollView>     
+      <ScrollView style={styles.scrollContainer}>  
+
+        <Icon name={iconName} style={styles.faveIcon} size={25}/>
+
         <View>
-          <Text> {data.location} </Text>
-          <Text> {data.title} </Text>
-          <Text> {moment.unix(data.title).format("h:mm a")} </Text>
-          <Text> {data.description} </Text>
-          <Text> {data.location} </Text>
+          <Text style={styles.locationStyle}>{data.location}</Text>
+          <Text style={styles.titleStyle}>{data.title}</Text>
+          <Text style={styles.timeStyle}>{moment.unix(data.start_time).format("h:mm A")}</Text>
+          <Text style={styles.descriptionStyle}>{data.description}</Text>
         </View>
 
         <TouchableHighlight onPress={()=> goToSpeaker({speaker})}>
         <View>
-          <Text> Presented by: </Text>
-          <Image style={{width: 50, height: 50, borderRadius: 25}} source={{uri: `${speaker.image}`}} />
-          <Text> {speaker.name} </Text>          
+          <Text style={styles.presentedStyle}> Presented by: </Text>
+          <Image style={styles.speakerImage} source={{uri: `${speaker.image}`}} />
+          <Text style={styles.speakerStyle}> {speaker.name} </Text>          
         </View>
         </TouchableHighlight>
+
+        <View style={styles.buttonSeparator}></View>
+
         <Button
           onPress={() => addFave(data.session_id)}
           title='Add to Favourites'
+          style={styles.faveButtonStyle}
         />
       </ScrollView>
     )

@@ -37,7 +37,7 @@ const SessionList = ({data, currentNavigatorUID}) => (
     renderSectionHeader={({section}) => 
       <View style={styles.titleSeparator}>
         <Text style={styles.titleSeparatorText}>
-          {moment.unix(section.title).format("h:mm a").toUpperCase()}
+          {moment.unix(section.title).format("h:mm A")}
         </Text>
       </View>}
     sections={data}
