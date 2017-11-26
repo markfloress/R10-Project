@@ -24,7 +24,6 @@ class NavigationLayout extends Component {
           title='Schedule'
           renderTitle={(isSelected) => this.renderTitle(isSelected, 'Schedule')}
           renderIcon={(isSelected) => this.renderIcon("ios-calendar", isSelected)}
-          //  selectedStyle={styles.selectedTab}
           >
           <StackNavigation
             id='schedule'
@@ -38,7 +37,6 @@ class NavigationLayout extends Component {
           title='Map'
           renderTitle={(isSelected) => this.renderTitle(isSelected, 'Map')}
           renderIcon={(isSelected) => this.renderIcon("ios-map", isSelected)}
-          //  selectedStyle={styles.selectedTab}
           >
           <StackNavigation
             id='map'
@@ -52,7 +50,6 @@ class NavigationLayout extends Component {
           title='Faves'
           renderTitle={(isSelected) => this.renderTitle(isSelected, 'Faves')}
           renderIcon={(isSelected) => this.renderIcon("ios-heart", isSelected)}
-          //  selectedStyle={styles.selectedTab}
           >
           <StackNavigation
             id='faves'
@@ -66,7 +63,6 @@ class NavigationLayout extends Component {
           title='About'
           renderTitle={(isSelected) => this.renderTitle(isSelected, 'About')}
           renderIcon={(isSelected) => this.renderIcon("ios-information-circle", isSelected)}
-          //  selectedStyle={styles.selectedTab}
           >
           <StackNavigation
             id='about'

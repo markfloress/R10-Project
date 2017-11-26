@@ -11,8 +11,8 @@ const createStoreWithNavigation = createNavigationEnabledStore({
 
 const store = createStoreWithNavigation(
   rootReducer,
-  {}, // initial state
-  composeEnhancers(applyMiddleware(thunk)) // enhancers
+  {},
+  composeEnhancers(applyMiddleware(thunk))
 );
 
 export default store;
