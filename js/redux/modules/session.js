@@ -1,4 +1,4 @@
-import { formatSessionData } from '../../lib/sectionList-helpers'
+// import { formatSessionData } from '../../lib/sectionList-helpers'
 
 const getSessionBegin = () => {
   return { type: 'GET_SESSION_BEGIN' }
@@ -18,7 +18,7 @@ export const getSession = () => async dispatch => {
     try{
       const data = await fetch('https://r10app-95fea.firebaseio.com/sessions.json')
       const Session = await data.json()
-      dispatch(getSessionSuccess(formatSessionData(Session)))
+      dispatch(getSessionSuccess(Session))
     } catch (Err) {
       dispatch(getSessionError(Err))
     }

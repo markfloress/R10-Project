@@ -6,7 +6,7 @@ const getFaveSuccess = (data) => {
 
 export const getFaveData = () => async dispatch => {
   try{
-    const data = queryFave().map(x => x)
+    const data = queryFave().map(x => x.id)
     dispatch(getFaveSuccess(data))
   } catch (Err) {
     console.log('error with get fave', Err)

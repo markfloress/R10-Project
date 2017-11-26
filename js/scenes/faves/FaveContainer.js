@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import realm from '../../config/models'
 import { getFaveData } from '../../redux/modules/faves'
 import { getSession } from '../../redux/modules/session'
+import { formatSessionData } from '../../lib/sectionList-helpers'
 
 class FavesContainer extends Component {
   static route = {
@@ -21,11 +22,11 @@ class FavesContainer extends Component {
   componentDidMount(){
     this.props.dispatch(getFaveData())
     this.props.dispatch(getSession())    
-    // realm.addListener('change', this.faveUpdates)
+    realm.addListener('change', this.faveUpdates)
   }
 
   componentWillUnmount(){
-    // realm.removeListener('change', this.faveUpdates)
+    realm.removeListener('change', this.faveUpdates)
   }
 
   render() {
@@ -35,9 +36,9 @@ class FavesContainer extends Component {
       return faveList.indexOf(item.session_id) >= 0
     })
 
-    // return <Faves faves={this.props.session.map(x => x.data.map(y => y.session_id))}/>
-    // return <Faves faves={this.props.faveList}/>
-    return <Faves faves={allFaved}/>    
+    const formattedFaves = formatSessionData(allFaved)
+
+    return <Faves faves={formattedFaves}/>
   }
 }
 
