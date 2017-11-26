@@ -83,13 +83,13 @@ class NavigationLayout extends Component {
 
   renderIcon(iconName, isSelected){
     return(
-      <Icon name={iconName} color={isSelected ? "white" : colors.medGray} size={25}/>
+      <Icon name={iconName} color={isSelected ? "white" : colors.medGrey} size={25}/>
     )
   }
 
   renderTitle(isSelected, title){
     return(
-      <Text style={{ color: isSelected ? "white" : colors.medGray, fontFamily: typography.fontMainReg}}> {title} </Text>
+      <Text style={{ color: isSelected ? "white" : colors.medGrey, fontFamily: typography.fontMainReg}}> {title} </Text>
     )
   }
 }
