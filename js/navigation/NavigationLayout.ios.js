@@ -7,20 +7,20 @@ import {
   TabNavigationItem as TabItem,
 } from '@expo/ex-navigation';
 
-import LinearGradient from 'react-native-linear-gradient'
-
 import { Text } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 
 import { Router } from './routes'
 import { colors, typography } from '../config/styles'
 
-const titleGradients = <LinearGradient
-                          start={{x: 0.9, y: 0}} 
-                          end={{x: 0.3, y: 1.0}}
-                          locations={[0,1]}
-                          colors={[colors.red, colors.purple]}
-                          style={{flex: 1}}>
-                        </LinearGradient>
+const titleGradients = 
+    <LinearGradient
+      start={{x: 0.9, y: 0}} 
+      end={{x: 0.3, y: 1.0}}
+      locations={[0,1]}
+      colors={[colors.red, colors.purple]}
+      style={{flex: 1}}>
+    </LinearGradient>
 
 const defaultRouteConfig = {
   navigationBar: {

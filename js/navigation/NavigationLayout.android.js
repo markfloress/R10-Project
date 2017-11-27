@@ -8,9 +8,29 @@ import {
 } from '@expo/ex-navigation';
 
 import { Text } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 
 import { Router } from './routes'
 import { colors, typography } from '../config/styles'
+
+const titleGradients = 
+<LinearGradient
+  start={{x: 0.9, y: 0}} 
+  end={{x: 0.3, y: 1.0}}
+  locations={[0,1]}
+  colors={[colors.red, colors.purple]}
+  style={{flex: 1}}>
+</LinearGradient>
+
+const defaultRouteConfig = {
+navigationBar: {
+tintColor: 'white',
+titleStyle: {fontFamily: typography.fontMainReg},
+drawUnderNavBar: true,
+renderBackground: () =>
+  titleGradients
+}
+}
 
 class NavigationLayout extends Component {
   render() {
@@ -29,6 +49,7 @@ class NavigationLayout extends Component {
             id='schedule'
             navigatorUID='schedule'
             initialRoute={Router.getRoute('schedule')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </DrawerNavigationItem>
 
@@ -42,6 +63,7 @@ class NavigationLayout extends Component {
             id='map'
             navigatorUID='map'
             initialRoute={Router.getRoute('map')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </DrawerNavigationItem>
 
@@ -55,6 +77,7 @@ class NavigationLayout extends Component {
             id='faves'
             navigatorUID='faves'
             initialRoute={Router.getRoute('faves')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </DrawerNavigationItem>
 
@@ -68,6 +91,7 @@ class NavigationLayout extends Component {
             id='about'
             navigatorUID='about'
             initialRoute={Router.getRoute('about')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </DrawerNavigationItem>
 
