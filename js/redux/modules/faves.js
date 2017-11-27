@@ -4,7 +4,7 @@ const getFaveSuccess = (data) => {
   return { type: 'GET_FAVE_SUCCESS', data }
 }
 
-export const getFaveData = () => async dispatch => {
+export const getFaveData = () => dispatch => {
   try{
     const data = queryFave().map(x => x.id)
     dispatch(getFaveSuccess(data))

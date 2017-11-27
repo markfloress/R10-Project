@@ -18,7 +18,7 @@ class ScheduleContainer extends Component {
   
   componentDidMount(){
     this.props.dispatch(getSession())
-    this.props.dispatch(getFaveData())    
+    this.props.dispatch(getFaveData())
   }
 
   render() {

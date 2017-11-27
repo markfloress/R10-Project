@@ -14,9 +14,8 @@ export const queryFave = () => {
   return realm.objects('Fave')
 }
 
-export const deleteFave = (Fave) => {
-  let deleteFave = realm.objects('Fave').filtered('id == $0', Fave)
-
+export const deleteFave = (FaveID) => {
+  let deleteFave = realm.objects('Fave').filtered('id == $0', FaveID)
   try {
     realm.write(() => {
       realm.delete(deleteFave);
@@ -24,7 +23,6 @@ export const deleteFave = (Fave) => {
   } catch (e) {
     console.log(e)
   }
-
 }
 
 export const addFave = (session_id) => {

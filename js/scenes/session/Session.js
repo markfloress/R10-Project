@@ -5,16 +5,20 @@ import styles from './styles'
 import { goToSpeaker } from '../../lib/navigationHelper'
 
 import { addFave } from '../../config/models'
+import { deleteFave } from '../../config/models'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 const Session = ({data, speaker, faveList}) => {
 
   const favedHeart = <Icon name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} style={styles.faveIcon} size={25}/>
 
+  const addFaveButton = <Button onPress={() => addFave(data.session_id)} title='Add to Favourites' style={styles.faveButtonStyle} />
+  const removeFaveButton = <Button onPress={() => deleteFave(data.session_id)} title='Remove from Favourites' style={styles.faveButtonStyle} />  
+
   return(
       <ScrollView style={styles.scrollContainer}>  
 
-        {faveList.indexOf(data.session_id) ? favedHeart : null}
+        {faveList.indexOf(data.session_id) >-1 ? favedHeart : null}
 
         <View>
           <Text style={styles.locationStyle}>{data.location}</Text>
@@ -33,11 +37,9 @@ const Session = ({data, speaker, faveList}) => {
 
         <View style={styles.buttonSeparator}></View>
 
-        <Button
-          onPress={() => addFave(data.session_id)}
-          title='Add to Favourites'
-          style={styles.faveButtonStyle}
-        />
+        {/* {faveList.indexOf(data.session_id) >-1 ? removeFaveButton : addFaveButton} */}
+        <Button onPress={faveList.indexOf(data.session_id) >-1 ? () => deleteFave(data.session_id) : () => addFave(data.session_id)} title={faveList.indexOf(data.session_id) >-1 ? 'remove fave' : 'Add to Favourites'} style={styles.faveButtonStyle} />
+
       </ScrollView>
     )
 }

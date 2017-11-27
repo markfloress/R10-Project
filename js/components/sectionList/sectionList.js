@@ -28,7 +28,7 @@ const SessionList = ({data, currentNavigatorUID, faveList}) => (
           <View style={styles.indivSession}>
             <Text style={styles.sessionTitle}>{item.title}</Text>
             <Text style={styles.sessionLocation}>{item.location}</Text>
-            {faveList.indexOf(item.session_id) ? favedHeart : null}
+            {faveList.indexOf(item.session_id) >-1 ? favedHeart : null}
           </View>
         </TouchableHighlight>
       )

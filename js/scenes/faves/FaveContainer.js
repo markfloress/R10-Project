@@ -3,7 +3,6 @@ import Faves from './Faves'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import realm from '../../config/models'
 import { getFaveData } from '../../redux/modules/faves'
 import { getSession } from '../../redux/modules/session'
 import { formatSessionData } from '../../lib/sectionList-helpers'
@@ -21,12 +20,7 @@ class FavesContainer extends Component {
 
   componentDidMount(){
     this.props.dispatch(getFaveData())
-    this.props.dispatch(getSession())    
-    realm.addListener('change', this.faveUpdates)
-  }
-
-  componentWillUnmount(){
-    realm.removeListener('change', this.faveUpdates)
+    this.props.dispatch(getSession())
   }
 
   render() {
