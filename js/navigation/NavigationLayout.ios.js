@@ -26,7 +26,6 @@ const defaultRouteConfig = {
   navigationBar: {
     tintColor: 'white',
     titleStyle: {fontFamily: typography.fontMainReg},
-    drawUnderNavBar: true,
     renderBackground: () =>
       titleGradients
   }
