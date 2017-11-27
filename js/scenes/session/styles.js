@@ -4,7 +4,6 @@ import { colors, typography } from '../../config/styles'
 
 export default StyleSheet.create({
   scrollContainer:{
-    height: '100%',
     padding: 25
   },
 
@@ -51,10 +50,18 @@ export default StyleSheet.create({
     marginBottom: 15
   },
 
+  speakerContainer:{
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15
+  },
+
   speakerImage:{
-    width: 75,
-    height: 75,
-    borderRadius: 35
+    width: 65,
+    height: 65,
+    borderRadius: 32.5,
+    marginRight: 10
   },
 
   speakerStyle:{
@@ -67,11 +74,23 @@ export default StyleSheet.create({
     backgroundColor: colors.lightGrey
   },
 
-  faveButtonStyle:{
-    height: 20,
-    width: 20,
-    backgroundColor: 'purple',
-    padding: 20,
-    color: 'white'
+  buttonHighlight:{
+    alignItems: 'center',
+    backgroundColor: 'transparent'
+  },
+
+  buttonGradient:{
+    width: 200,
+    padding: 10,
+    borderRadius: 50,
+    alignSelf: 'center',
+    marginTop: 15,
+    marginBottom: 40
+  },
+
+  buttonText:{
+    color: 'white',
+    fontSize: 14,
+    fontFamily: typography.fontMainReg
   }
 })

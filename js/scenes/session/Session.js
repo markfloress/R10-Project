@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { Text, View, ScrollView, Image, TouchableHighlight, Button, Platform } from 'react-native'
+import { Text, View, ScrollView, Image, TouchableHighlight, TouchableOpacity, Button, Platform } from 'react-native'
 import styles from './styles'
 import { goToSpeaker } from '../../lib/navigationHelper'
 
@@ -8,6 +8,7 @@ import { addFave } from '../../config/models'
 import { deleteFave } from '../../config/models'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '../../config/styles'
+import LinearGradient from 'react-native-linear-gradient'       
 
 const Session = ({data, speaker, faveList}) => {
 
@@ -26,16 +27,28 @@ const Session = ({data, speaker, faveList}) => {
         </View>
 
         {speaker ? <TouchableHighlight underlayColor={colors.lightGrey} onPress={()=> goToSpeaker({speaker})}>
+
           <View>
             <Text style={styles.presentedStyle}> Presented by: </Text>
-            <Image style={styles.speakerImage} source={{uri: `${speaker.image}`}}/>
-            <Text style={styles.speakerStyle}> {speaker.name} </Text>
+            <View style={styles.speakerContainer}>
+              <Image style={styles.speakerImage} source={{uri: `${speaker.image}`}}/>
+              <Text style={styles.speakerStyle}> {speaker.name} </Text>
+            </View>
           </View>
         </TouchableHighlight> : null}
 
         <View style={styles.buttonSeparator}></View>
 
-        <Button onPress={faveList.indexOf(data.session_id) >-1 ? () => deleteFave(data.session_id) : () => addFave(data.session_id)} title={faveList.indexOf(data.session_id) >-1 ? 'remove fave' : 'Add to Favourites'} style={styles.faveButtonStyle} />
+        <LinearGradient
+          start={{x: 0.9, y: 0}} 
+          end={{x: 0.3, y: 1.0}}
+          locations={[0,1]}
+          colors={[colors.purple, colors.red]}
+          style={styles.buttonGradient}>
+      <TouchableOpacity style={styles.buttonHighlight} onPress={faveList.indexOf(data.session_id) >-1 ? () => deleteFave(data.session_id) : () => addFave(data.session_id)}>
+            <Text style={styles.buttonText}> {faveList.indexOf(data.session_id) >-1 ? 'Remove from Faves' : 'Add to Favourites'} </Text>
+      </TouchableOpacity>
+        </LinearGradient>
 
       </ScrollView>
     )

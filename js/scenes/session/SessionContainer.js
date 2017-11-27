@@ -27,9 +27,7 @@ class SessionContainer extends Component {
 
   render() {
     return (
-      <View>
-        <Session data={this.props.sessionData} speaker={this.props.speaker} faveList={this.props.faveList}/>
-      </View>
+      <Session data={this.props.sessionData} speaker={this.props.speaker} faveList={this.props.faveList}/>
     )
   }
 }
