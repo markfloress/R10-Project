@@ -47,7 +47,7 @@ const About = ({data, isLoading}) => {
 }
 
 About.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.any.isRequired,
   isLoading: PropTypes.any.isRequired
 }
 

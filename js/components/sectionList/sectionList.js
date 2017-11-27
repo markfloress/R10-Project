@@ -22,7 +22,7 @@ const SessionList = ({data, currentNavigatorUID, faveList}) => (
 
   <View>
   <SectionList
-    renderItem={({item}) => {
+    renderItem={({item, index}) => {
       return(
         <TouchableHighlight underlayColor={colors.lightGrey} onPress={()=> goToSession(currentNavigatorUID, item)}>
           <View style={styles.indivSession}>
@@ -33,6 +33,8 @@ const SessionList = ({data, currentNavigatorUID, faveList}) => (
         </TouchableHighlight>
       )
     }}
+
+    keyExtractor = {(item, index) => index}    
 
     ItemSeparatorComponent={()=> 
       <View style={styles.sessionSeparator}>
@@ -51,7 +53,7 @@ const SessionList = ({data, currentNavigatorUID, faveList}) => (
 )
 
 SessionList.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.any.isRequired,
   currentNavigatorUID: PropTypes.string.isRequired,
   faveList: PropTypes.array.isRequired
 }

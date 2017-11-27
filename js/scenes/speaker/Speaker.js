@@ -38,7 +38,7 @@ const Speaker = ({speaker, goBack}) => {
 }
 
 Speaker.propTypes = {
-  speaker: PropTypes.array.isRequired,
+  speaker: PropTypes.any.isRequired,
   goBack: PropTypes.any.isRequired
 }
 

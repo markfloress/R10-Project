@@ -13,7 +13,7 @@ class AboutContainer extends Component {
   }
 
   static propTypes ={
-    conduct: PropTypes.array.isRequired,
+    conduct: PropTypes.any.isRequired,
     isLoading: PropTypes.any.isRequired,
     dispatch: PropTypes.any.isRequired,
     navigator: PropTypes.any.isRequired

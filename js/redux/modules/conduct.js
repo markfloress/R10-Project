@@ -10,7 +10,6 @@ const getConductError = (Err) => {
   return { type: 'GET_CONDUCT_ERROR', Err }
 }
 
-
 export const getConduct = () => async dispatch => {
     dispatch(getConductBegin())
     try{
@@ -21,7 +20,6 @@ export const getConduct = () => async dispatch => {
       dispatch(getConductError(Err))
     }
 }
-
 
 const initialState = {
   conduct: [],

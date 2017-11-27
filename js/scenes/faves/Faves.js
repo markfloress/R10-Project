@@ -22,7 +22,7 @@ const Faves = ({faveList, currentNavigatorUID, isLoading}) => {
       <View>
         <SectionList
           sections={faveList}
-          renderItem={({item}) => {
+          renderItem={({item, index}) => {
             return(
               <TouchableHighlight underlayColor={colors.lightGrey} onPress={()=> goToSession(currentNavigatorUID, item)}>
                 <View style={styles.indivSession}>
@@ -33,6 +33,8 @@ const Faves = ({faveList, currentNavigatorUID, isLoading}) => {
               </TouchableHighlight>
             )
           }}
+
+          keyExtractor = {(item, index) => index}
 
           ItemSeparatorComponent={()=> 
             <View style={styles.sessionSeparator}>

@@ -19,7 +19,7 @@ class ScheduleContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.any.isRequired,
     faveList: PropTypes.array.isRequired,
-    session: PropTypes.array.isRequired,
+    session: PropTypes.any.isRequired,
     isLoading: PropTypes.any.isRequired
   }
   

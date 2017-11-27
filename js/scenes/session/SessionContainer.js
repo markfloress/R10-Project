@@ -17,10 +17,10 @@ class SessionContainer extends Component {
 
   static propTypes = {
     dispatch: PropTypes.any.isRequired,
-    sessionData: PropTypes.array.isRequired,
-    speaker: PropTypes.array.isRequired,
+    sessionData: PropTypes.any.isRequired,
+    speaker: PropTypes.any.isRequired,
     faveList: PropTypes.array.isRequired,
-    isLoading: PropTypes.aany.isRequired
+    isLoading: PropTypes.any.isRequired
   }
 
   faveUpdates(){

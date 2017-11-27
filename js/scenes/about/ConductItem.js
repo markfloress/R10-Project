@@ -7,7 +7,7 @@ import styles from './styles'
 
 class ConductItem extends Component {
   static propTypes = {
-    data: PropTypes.array.isRequired
+    data: PropTypes.any.isRequired
   }
 
   state = {

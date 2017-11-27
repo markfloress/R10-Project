@@ -61,8 +61,8 @@ const Session = ({data, speaker, faveList, isLoading}) => {
 }
 
 Session.propTypes= {
-  data: PropTypes.array.isRequired,
-  speaker: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
+  speaker: PropTypes.any.isRequired,
   faveList: PropTypes.array.isRequired,
   isLoading: PropTypes.any.isRequired
 }

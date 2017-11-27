@@ -11,11 +11,11 @@ class MapContainer extends Component {
     }
   }
 
-  static propTypes = {
-    navigator: PropTypes.any.isRequired,
-    data: PropTypes.array.isRequired,
-    isLoading: PropTypes.any.isRequired
-  }
+  // static propTypes = {
+  //   navigator: PropTypes.any.isRequired,
+  //   data: PropTypes.array.isRequired,
+  //   isLoading: PropTypes.any.isRequired
+  // }
 
   static route = {
     navigationBar: {

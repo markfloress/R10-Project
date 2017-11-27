@@ -20,7 +20,7 @@ const Schedule = ({data, faveList, isLoading}) => {
 }
 
 Schedule.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.any.isRequired,
   faveList: PropTypes.array.isRequired,
   isLoading: PropTypes.any.isRequired
 }

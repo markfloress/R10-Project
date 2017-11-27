@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 class SpeakerContainer extends Component {
   static propTypes = {
-    speakerData: PropTypes.array.isRequired,
+    speakerData: PropTypes.any.isRequired,
     navigator: PropTypes.any.isRequired
   }
 
