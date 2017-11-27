@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import { View } from 'react-native'
 import { getSpeaker } from '../../redux/modules/speaker'
+import { getFaveData } from '../../redux/modules/faves'
 
 class SessionContainer extends Component {
   static route = {
@@ -15,12 +16,13 @@ class SessionContainer extends Component {
 
   componentDidMount(){
     this.props.dispatch(getSpeaker(this.props.sessionData.speaker))
+    this.props.dispatch(getFaveData())
   }
 
   render() {
     return (
       <View>
-        <Session data={this.props.sessionData} speaker={this.props.speaker}/>
+        <Session data={this.props.sessionData} speaker={this.props.speaker} faveList={this.props.faveList}/>
       </View>
     )
   }
@@ -32,7 +34,8 @@ class SessionContainer extends Component {
 
 function mapStateToProps(state){
   return {
-    speaker: state.speakerReducer.speaker
+    speaker: state.speakerReducer.speaker,
+    faveList: state.faveReducer.faveList
   }
 }
 

@@ -7,14 +7,14 @@ import { goToSpeaker } from '../../lib/navigationHelper'
 import { addFave } from '../../config/models'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const Session = ({data, speaker}) => {
+const Session = ({data, speaker, faveList}) => {
 
-  const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
+  const favedHeart = <Icon name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} style={styles.faveIcon} size={25}/>
 
   return(
       <ScrollView style={styles.scrollContainer}>  
 
-        <Icon name={iconName} style={styles.faveIcon} size={25}/>
+        {faveList.indexOf(data.session_id) ? favedHeart : null}
 
         <View>
           <Text style={styles.locationStyle}>{data.location}</Text>
