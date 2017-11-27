@@ -18,7 +18,7 @@ const titleGradients =
   start={{x: 0.9, y: 0}} 
   end={{x: 0.3, y: 1.0}}
   locations={[0,1]}
-  colors={[colors.red, colors.purple]}
+  colors={[colors.purple, colors.red]}
   style={{flex: 1}}>
 </LinearGradient>
 

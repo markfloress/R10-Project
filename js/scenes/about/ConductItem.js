@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, LayoutAnimation, TouchableWithoutFeedback, Animated, Platform, Easing } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import styles from './styles'
+
 class ConductItem extends Component {
   state = {
     showText: false,
     iconName: Platform.OS === 'ios' ? 'ios-add' : 'md-add',
     rotation: new Animated.Value(0),
     duration: 300
-
   }
 
   _toggleConduct = () => {
@@ -39,30 +40,23 @@ class ConductItem extends Component {
     })
   }
 
-
   render() {
     const spin = this.state.rotation.interpolate({
       inputRange: [0, 1],
       outputRange: ["0deg", "-180deg"]
     })
-
-    const spinBack = this.state.rotation.interpolate({
-      inputRange: [0, 1],
-      outputRange: ["-180deg", "0deg"]
-    })
-    
     
     return (
       <View>
         <TouchableWithoutFeedback onPress={() => this._startAnimation()}>
-        <View>
-          <Animated.View style={{flex: 1, width: 15, flexDirection: 'column', transform:[{ rotate: spin }]}}>
-            <Icon style={{flex: 1}} name={this.state.iconName} color="gray" size={25}/>
+        <View style={styles.conductTitle}>
+          <Animated.View style={{transform:[{ rotate: spin }]}}>
+            <Icon name={this.state.iconName} size={25} style={styles.conductIcon}/>
           </Animated.View>
-          <Text style={{flex: 1}}>{this.props.data.title}</Text>
+          <Text style={styles.conductText}>{this.props.data.title}</Text>
         </View>
         </TouchableWithoutFeedback>
-        {this.state.showText && <Text>{this.props.data.description}</Text>}
+        {this.state.showText && <Text style={styles.conductDescription}>{this.props.data.description}</Text>}
       </View>
     );
   }
