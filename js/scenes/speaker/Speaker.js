@@ -1,15 +1,35 @@
 import React from 'react';
-import { Text, View, ScrollView, Image, StyleSheet, ActivityIndicator, FlatList } from 'react-native'
+import { Text, View, ScrollView, Image, Platform, TouchableOpacity, Linking} from 'react-native'
 import styles from './styles'
+import Icon from 'react-native-vector-icons/Ionicons'
+import LinearGradient from 'react-native-linear-gradient'
+import { colors } from '../../config/styles'
 
-const Speaker = ({speaker}) => {
+const Speaker = ({speaker, goBack}) => {
+
   return(
-      <ScrollView>     
-        
+      <ScrollView style={styles.speakerContainer}>
+
         <View>
-          <Image style={{width: 100, height: 100, borderRadius: 50}} source={{uri: `${speaker.image}`}} />
-          <Text> {speaker.name} </Text>
-          <Text> {speaker.bio} </Text>
+          <Icon onPress={()=> goBack()} name={Platform.OS === 'ios' ? 'ios-close' : 'md-close'} style={styles.leaveIcon} size={25}/>
+          <Text style={styles.headerTitle}> About the Speaker </Text>
+        </View>
+
+        <View style={styles.speakerInfoContainer}>
+          <Image style={styles.speakerImage} source={{uri: `${speaker.image}`}} />
+          <Text style={styles.speakerName}>{speaker.name}</Text>
+          <Text style={styles.speakerBio}>{speaker.bio}</Text>
+          
+          <LinearGradient
+            start={{x: 0.9, y: 0}} 
+            end={{x: 0.3, y: 1.0}}
+            locations={[0,1]}
+            colors={[colors.blue, colors.purple]}
+            style={styles.buttonGradient}>
+          <TouchableOpacity style={styles.buttonHighlight} onPress={() => Linking.openURL(speaker.url)}>
+            <Text style={styles.buttonText}> Read More on Wikipedia </Text>
+          </TouchableOpacity>
+        </LinearGradient>
         </View>
 
       </ScrollView>

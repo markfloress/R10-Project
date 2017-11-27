@@ -8,14 +8,14 @@ import { addFave } from '../../config/models'
 import { deleteFave } from '../../config/models'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '../../config/styles'
-import LinearGradient from 'react-native-linear-gradient'       
+import LinearGradient from 'react-native-linear-gradient'
 
 const Session = ({data, speaker, faveList}) => {
 
   const favedHeart = <Icon name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} style={styles.faveIcon} size={25}/>
 
   return(
-      <ScrollView style={styles.scrollContainer}>  
+      <ScrollView style={styles.scrollContainer}>
 
         {faveList.indexOf(data.session_id) >-1 ? favedHeart : null}
 
@@ -43,11 +43,11 @@ const Session = ({data, speaker, faveList}) => {
           start={{x: 0.9, y: 0}} 
           end={{x: 0.3, y: 1.0}}
           locations={[0,1]}
-          colors={[colors.purple, colors.red]}
+          colors={[colors.blue, colors.purple]}
           style={styles.buttonGradient}>
-      <TouchableOpacity style={styles.buttonHighlight} onPress={faveList.indexOf(data.session_id) >-1 ? () => deleteFave(data.session_id) : () => addFave(data.session_id)}>
+          <TouchableOpacity style={styles.buttonHighlight} onPress={faveList.indexOf(data.session_id) >-1 ? () => deleteFave(data.session_id) : () => addFave(data.session_id)}>
             <Text style={styles.buttonText}> {faveList.indexOf(data.session_id) >-1 ? 'Remove from Faves' : 'Add to Favourites'} </Text>
-      </TouchableOpacity>
+          </TouchableOpacity>
         </LinearGradient>
 
       </ScrollView>
