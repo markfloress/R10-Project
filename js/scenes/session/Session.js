@@ -7,6 +7,7 @@ import { goToSpeaker } from '../../lib/navigationHelper'
 import { addFave } from '../../config/models'
 import { deleteFave } from '../../config/models'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { colors } from '../../config/styles'
 
 const Session = ({data, speaker, faveList}) => {
 
@@ -24,7 +25,7 @@ const Session = ({data, speaker, faveList}) => {
           <Text style={styles.descriptionStyle}>{data.description}</Text>
         </View>
 
-        {speaker ? <TouchableHighlight onPress={()=> goToSpeaker({speaker})}>
+        {speaker ? <TouchableHighlight underlayColor={colors.lightGrey} onPress={()=> goToSpeaker({speaker})}>
           <View>
             <Text style={styles.presentedStyle}> Presented by: </Text>
             <Image style={styles.speakerImage} source={{uri: `${speaker.image}`}}/>

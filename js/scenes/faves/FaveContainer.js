@@ -32,7 +32,7 @@ class FavesContainer extends Component {
 
     const formattedFaves = formatSessionData(allFaved)
 
-    return <Faves faves={formattedFaves}/>
+    return <Faves faveList={formattedFaves} currentNavigatorUID={'faves'}/>
   }
 }
 
