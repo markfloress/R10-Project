@@ -6,16 +6,16 @@ import About from './About'
 import { getConduct } from '../../redux/modules/conduct'
 
 class AboutContainer extends Component {
+  static route = {
+    navigationBar: {
+      title: 'About'
+    }
+  }
 
   componentDidMount(){
     this.props.dispatch(getConduct())
   }
 
-  static route = {
-    navigationBar: {
-      title: 'About',
-    }
-  }
 
   render() {
     return <About data={this.props.conduct} isLoading={this.props.isLoading}/>

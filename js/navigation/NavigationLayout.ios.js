@@ -7,10 +7,30 @@ import {
   TabNavigationItem as TabItem,
 } from '@expo/ex-navigation';
 
+import LinearGradient from 'react-native-linear-gradient'
+
 import { Text } from 'react-native'
 
 import { Router } from './routes'
 import { colors, typography } from '../config/styles'
+
+const titleGradients = <LinearGradient
+                          start={{x: 0.9, y: 0}} 
+                          end={{x: 0.3, y: 1.0}}
+                          locations={[0,1]}
+                          colors={[colors.red, colors.purple]}
+                          style={{flex: 1}}>
+                        </LinearGradient>
+
+const defaultRouteConfig = {
+  navigationBar: {
+    tintColor: 'white',
+    titleStyle: {fontFamily: typography.fontMainReg},
+    drawUnderNavBar: true,
+    renderBackground: () =>
+      titleGradients
+  }
+}
 
 class NavigationLayout extends Component {
   render() {
@@ -26,12 +46,12 @@ class NavigationLayout extends Component {
           title='Schedule'
           renderTitle={this.renderTitle}
           renderIcon={(isSelected) => this.renderIcon("ios-calendar", isSelected)}
-          //  selectedStyle={styles.selectedTab}
           >
           <StackNavigation
             id='schedule'
             navigatorUID='schedule'
             initialRoute={Router.getRoute('schedule')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>
 
@@ -40,12 +60,12 @@ class NavigationLayout extends Component {
           title='Map'
           renderTitle={this.renderTitle}
           renderIcon={(isSelected) => this.renderIcon("ios-map", isSelected)}
-          //  selectedStyle={styles.selectedTab}
           >
           <StackNavigation
             id='map'
             navigatorUID='map'
             initialRoute={Router.getRoute('map')}
+            defaultRouteConfig={defaultRouteConfig}            
           />
         </TabItem>
 
@@ -54,12 +74,12 @@ class NavigationLayout extends Component {
           title='Faves'
           renderTitle={this.renderTitle}
           renderIcon={(isSelected) => this.renderIcon("ios-heart", isSelected)}
-          //  selectedStyle={styles.selectedTab}
           >
           <StackNavigation
             id='faves'
             navigatorUID='faves'
             initialRoute={Router.getRoute('faves')}
+            defaultRouteConfig={defaultRouteConfig}            
           />
         </TabItem>
 
@@ -68,12 +88,12 @@ class NavigationLayout extends Component {
           title='About'
           renderTitle={this.renderTitle}
           renderIcon={(isSelected) => this.renderIcon("ios-information-circle", isSelected)}
-          //  selectedStyle={styles.selectedTab}
           >
           <StackNavigation
             id='about'
             navigatorUID='about'
             initialRoute={Router.getRoute('about')}
+            defaultRouteConfig={defaultRouteConfig}            
           />
         </TabItem>
 
