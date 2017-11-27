@@ -26,8 +26,9 @@ class SessionContainer extends Component {
   } 
 
   render() {
+    const {sessionData, speaker, faveList, isLoading} = this.props
     return (
-      <Session data={this.props.sessionData} speaker={this.props.speaker} faveList={this.props.faveList}/>
+      <Session data={sessionData} speaker={speaker} faveList={faveList} isLoading={isLoading}/>
     )
   }
 }
@@ -39,7 +40,8 @@ class SessionContainer extends Component {
 function mapStateToProps(state){
   return {
     speaker: state.speakerReducer.speaker,
-    faveList: state.faveReducer.faveList
+    faveList: state.faveReducer.faveList,
+    isLoading: state.speakerReducer.isLoading
   }
 }
 

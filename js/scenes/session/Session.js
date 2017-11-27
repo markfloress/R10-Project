@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { Text, View, ScrollView, Image, TouchableHighlight, TouchableOpacity, Button, Platform } from 'react-native'
+import { Text, View, ScrollView, Image, TouchableHighlight, TouchableOpacity, Button, Platform, ActivityIndicator} from 'react-native'
 import styles from './styles'
 import { goToSpeaker } from '../../lib/navigationHelper'
 
@@ -10,9 +10,13 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { colors } from '../../config/styles'
 import LinearGradient from 'react-native-linear-gradient'
 
-const Session = ({data, speaker, faveList}) => {
+const Session = ({data, speaker, faveList, isLoading}) => {
 
   const favedHeart = <Icon name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} style={styles.faveIcon} size={25}/>
+
+  if(isLoading){
+    return <ActivityIndicator animating={true} size="small" color="red" />    
+  } else {
 
   return(
       <ScrollView style={styles.scrollContainer}>
@@ -52,6 +56,7 @@ const Session = ({data, speaker, faveList}) => {
 
       </ScrollView>
     )
+  }
 }
 
 export default Session
