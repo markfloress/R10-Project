@@ -24,7 +24,7 @@ class FavesContainer extends Component {
   }
 
   render() {
-    const { session, faveList } = this.props
+    const { session, faveList, isLoading } = this.props
 
     const allFaved = session.filter(item => { 
       return faveList.indexOf(item.session_id) >= 0
@@ -32,7 +32,7 @@ class FavesContainer extends Component {
 
     const formattedFaves = formatSessionData(allFaved)
 
-    return <Faves faveList={formattedFaves} currentNavigatorUID={'faves'}/>
+    return <Faves faveList={formattedFaves} currentNavigatorUID={'faves'} isLoading={isLoading}/>
   }
 }
 
@@ -43,7 +43,8 @@ class FavesContainer extends Component {
 function mapStateToProps(state){
   return {
     faveList: state.faveReducer.faveList,
-    session: state.sessionReducer.session
+    session: state.sessionReducer.session,
+    isLoading: state.sessionReducer.isLoading
   }
 }
 
