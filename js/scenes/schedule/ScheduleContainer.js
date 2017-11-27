@@ -22,8 +22,9 @@ class ScheduleContainer extends Component {
   }
 
   render() {
-    const formattedSession = formatSessionData(this.props.session)
-    return <Schedule data={formattedSession} faveList={this.props.faveList} />
+    const {faveList, session, isLoading} = this.props
+    const formattedSession = formatSessionData(session)
+    return <Schedule data={formattedSession} faveList={faveList} isLoading={isLoading}/>
   }
 }
 
@@ -34,7 +35,8 @@ class ScheduleContainer extends Component {
 function mapStateToProps(state){
   return {
     session: state.sessionReducer.session,
-    faveList: state.faveReducer.faveList
+    faveList: state.faveReducer.faveList,
+    isLoading: state.sessionReducer.isLoading
   }
 }
 
