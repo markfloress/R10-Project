@@ -12,9 +12,6 @@ const Session = ({data, speaker, faveList}) => {
 
   const favedHeart = <Icon name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} style={styles.faveIcon} size={25}/>
 
-  const addFaveButton = <Button onPress={() => addFave(data.session_id)} title='Add to Favourites' style={styles.faveButtonStyle} />
-  const removeFaveButton = <Button onPress={() => deleteFave(data.session_id)} title='Remove from Favourites' style={styles.faveButtonStyle} />  
-
   return(
       <ScrollView style={styles.scrollContainer}>  
 
@@ -27,17 +24,16 @@ const Session = ({data, speaker, faveList}) => {
           <Text style={styles.descriptionStyle}>{data.description}</Text>
         </View>
 
-        <TouchableHighlight onPress={()=> goToSpeaker({speaker})}>
-        <View>
-          <Text style={styles.presentedStyle}> Presented by: </Text>
-          <Image style={styles.speakerImage} source={{uri: `${speaker.image}`}} />
-          <Text style={styles.speakerStyle}> {speaker.name} </Text>          
-        </View>
-        </TouchableHighlight>
+        {speaker ? <TouchableHighlight onPress={()=> goToSpeaker({speaker})}>
+          <View>
+            <Text style={styles.presentedStyle}> Presented by: </Text>
+            <Image style={styles.speakerImage} source={{uri: `${speaker.image}`}}/>
+            <Text style={styles.speakerStyle}> {speaker.name} </Text>
+          </View>
+        </TouchableHighlight> : null}
 
         <View style={styles.buttonSeparator}></View>
 
-        {/* {faveList.indexOf(data.session_id) >-1 ? removeFaveButton : addFaveButton} */}
         <Button onPress={faveList.indexOf(data.session_id) >-1 ? () => deleteFave(data.session_id) : () => addFave(data.session_id)} title={faveList.indexOf(data.session_id) >-1 ? 'remove fave' : 'Add to Favourites'} style={styles.faveButtonStyle} />
 
       </ScrollView>

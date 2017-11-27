@@ -10,7 +10,6 @@ const Speaker = ({speaker}) => {
           <Image style={{width: 100, height: 100, borderRadius: 50}} source={{uri: `${speaker.image}`}} />
           <Text> {speaker.name} </Text>
           <Text> {speaker.bio} </Text>
-          {/* <Text> hi </Text> */}
         </View>
 
       </ScrollView>
