@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Text, View, StyleSheet, LayoutAnimation, TouchableWithoutFeedback, Animated, Platform, Easing } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons'
+import PropTypes from 'prop-types'
 
 import styles from './styles'
 
 class ConductItem extends Component {
+  static propTypes = {
+    data: PropTypes.array.isRequired
+  }
+
   state = {
     showText: false,
     iconName: Platform.OS === 'ios' ? 'ios-add' : 'md-add',
@@ -58,8 +63,8 @@ class ConductItem extends Component {
         </TouchableWithoutFeedback>
         {this.state.showText && <Text style={styles.conductDescription}>{this.props.data.description}</Text>}
       </View>
-    );
+    )
   }
 }
 
-export default ConductItem;
+export default ConductItem

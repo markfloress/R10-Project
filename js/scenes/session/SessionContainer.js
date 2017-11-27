@@ -15,6 +15,14 @@ class SessionContainer extends Component {
     }
   }
 
+  static propTypes = {
+    dispatch: PropTypes.any.isRequired,
+    sessionData: PropTypes.array.isRequired,
+    speaker: PropTypes.array.isRequired,
+    faveList: PropTypes.array.isRequired,
+    isLoading: PropTypes.aany.isRequired
+  }
+
   faveUpdates(){
     this.props.dispatch(getFaveData())
   }
@@ -32,10 +40,6 @@ class SessionContainer extends Component {
     )
   }
 }
-
-// SessionContainer.prototype = {
-
-// }
 
 function mapStateToProps(state){
   return {

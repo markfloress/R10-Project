@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
 import { Text, View, SectionList, TouchableHighlight, Platform, ActivityIndicator } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 
 import styles from './styles'
 import { colors } from '../../config/styles'
-import { goToSession } from '../../lib/navigationHelper';
+import { goToSession } from '../../lib/navigationHelper'
 
 const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
 
@@ -49,6 +50,12 @@ const Faves = ({faveList, currentNavigatorUID, isLoading}) => {
       </View>
     )
   }
+}
+
+Faves.propTypes = {
+  faveList: PropTypes.array.isRequired,
+  currentNavigatorUID: PropTypes.string.isRequired,
+  isLoading: PropTypes.any.isRequired
 }
 
 export default Faves

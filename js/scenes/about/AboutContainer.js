@@ -12,23 +12,27 @@ class AboutContainer extends Component {
     }
   }
 
+  static propTypes ={
+    conduct: PropTypes.array.isRequired,
+    isLoading: PropTypes.any.isRequired,
+    dispatch: PropTypes.any.isRequired,
+    navigator: PropTypes.any.isRequired
+  }
+
   componentDidMount(){
     this.props.dispatch(getConduct())
   }
 
 
   render() {
-    return <About data={this.props.conduct} isLoading={this.props.isLoading}/>
+    const {conduct, isLoading} = this.props
+    return <About data={conduct} isLoading={isLoading}/>
   }
 
   _goBack = () => {
     this.props.navigator.pop()
   }
 }
-
-// AboutContainer.prototype = {
-
-// }
 
 function mapStateToProps(state){
   return {

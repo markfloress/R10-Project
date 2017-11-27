@@ -7,6 +7,7 @@ import {
   Platform
 } from 'react-native'
 import moment from 'moment'
+import PropTypes from 'prop-types';
 
 import styles from './styles'
 import { goToSession } from '../../lib/navigationHelper';
@@ -48,5 +49,11 @@ const SessionList = ({data, currentNavigatorUID, faveList}) => (
   />
   </View>
 )
+
+SessionList.propTypes = {
+  data: PropTypes.array.isRequired,
+  currentNavigatorUID: PropTypes.string.isRequired,
+  faveList: PropTypes.array.isRequired
+}
 
 export default SessionList

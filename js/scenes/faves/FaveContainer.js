@@ -14,6 +14,13 @@ class FavesContainer extends Component {
     }
   }
 
+  static propTypes = {
+    dispatch: PropTypes.any.isRequired,
+    session: PropTypes.array.isRequired,
+    faveList: PropTypes.array.isRequired,
+    isLoading: PropTypes.any.isRequired
+  }
+
   faveUpdates(){
     this.props.dispatch(getFaveData())
   }
@@ -35,10 +42,6 @@ class FavesContainer extends Component {
     return <Faves faveList={formattedFaves} currentNavigatorUID={'faves'} isLoading={isLoading}/>
   }
 }
-
-// FavesContainer.prototype = {
-
-// }
 
 function mapStateToProps(state){
   return {

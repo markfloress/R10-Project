@@ -15,6 +15,13 @@ class ScheduleContainer extends Component {
       title: 'Schedule',
     }
   }
+
+  static propTypes = {
+    dispatch: PropTypes.any.isRequired,
+    faveList: PropTypes.array.isRequired,
+    session: PropTypes.array.isRequired,
+    isLoading: PropTypes.any.isRequired
+  }
   
   componentDidMount(){
     this.props.dispatch(getSession())
@@ -27,10 +34,6 @@ class ScheduleContainer extends Component {
     return <Schedule data={formattedSession} faveList={faveList} isLoading={isLoading}/>
   }
 }
-
-// ScheduleContainer.prototype = {
-
-// }
 
 function mapStateToProps(state){
   return {

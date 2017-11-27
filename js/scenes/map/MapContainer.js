@@ -11,6 +11,12 @@ class MapContainer extends Component {
     }
   }
 
+  static propTypes = {
+    navigator: PropTypes.any.isRequired,
+    data: PropTypes.array.isRequired,
+    isLoading: PropTypes.any.isRequired
+  }
+
   static route = {
     navigationBar: {
       title: 'Maps',
@@ -18,17 +24,14 @@ class MapContainer extends Component {
   }
 
   render() {
-    return <Maps data={this.state.data} isLoading={this.state.isLoading}/>
+    const {data, isLoading} = this.props
+    return <Maps data={data} isLoading={isLoading}/>
   }
 
   _goBack = () => {
     this.props.navigator.pop();
   }
 }
-
-// MapsContainer.prototype = {
-
-// }
 
 export default MapContainer;
 

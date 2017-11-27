@@ -2,6 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { Text, View, ScrollView, Image, TouchableHighlight, TouchableOpacity, Button, Platform, ActivityIndicator} from 'react-native'
 import styles from './styles'
+import PropTypes from 'prop-types'
 import { goToSpeaker } from '../../lib/navigationHelper'
 
 import { addFave } from '../../config/models'
@@ -57,6 +58,13 @@ const Session = ({data, speaker, faveList, isLoading}) => {
       </ScrollView>
     )
   }
+}
+
+Session.propTypes= {
+  data: PropTypes.array.isRequired,
+  speaker: PropTypes.array.isRequired,
+  faveList: PropTypes.array.isRequired,
+  isLoading: PropTypes.any.isRequired
 }
 
 export default Session

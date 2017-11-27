@@ -4,6 +4,7 @@ import styles from './styles'
 import Icon from 'react-native-vector-icons/Ionicons'
 import LinearGradient from 'react-native-linear-gradient'
 import { colors } from '../../config/styles'
+import PropTypes from 'prop-types'
 
 const Speaker = ({speaker, goBack}) => {
 
@@ -34,6 +35,11 @@ const Speaker = ({speaker, goBack}) => {
 
       </ScrollView>
     )
+}
+
+Speaker.propTypes = {
+  speaker: PropTypes.array.isRequired,
+  goBack: PropTypes.any.isRequired
 }
 
 export default Speaker

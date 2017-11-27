@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, View, ScrollView, Image, StyleSheet, ActivityIndicator, FlatList } from 'react-native'
+import { Text, View, ScrollView, Image, ActivityIndicator } from 'react-native'
 
 import styles from './styles'
+import PropTypes from 'prop-types';
 import ConductItem from './ConductItem'
 
 const About = ({data, isLoading}) => {
@@ -43,6 +44,11 @@ const About = ({data, isLoading}) => {
       </ScrollView>
     )
   }
+}
+
+About.propTypes = {
+  data: PropTypes.array.isRequired,
+  isLoading: PropTypes.any.isRequired
 }
 
 export default About
