@@ -14,8 +14,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const iconName = Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'
 
-const SessionList = ({data, currentNavigatorUID}) => (
+const favedHeart = <Icon name={iconName} style={styles.faveIcon} size={25}/>
+
+const SessionList = ({data, currentNavigatorUID, faveList}) => (
+
   <View>
+
+    {console.log(faveList)}
   <SectionList
     renderItem={({item}) => {
       return(
@@ -23,7 +28,7 @@ const SessionList = ({data, currentNavigatorUID}) => (
           <View style={styles.indivSession}>
             <Text style={styles.sessionTitle}>{item.title}</Text>
             <Text style={styles.sessionLocation}>{item.location}</Text>
-            <Icon name={iconName} style={styles.faveIcon} size={25}/>
+            {faveList.indexOf(item.session_id) ? favedHeart : null}
           </View>
         </TouchableHighlight>
       )
